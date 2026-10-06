@@ -1,12 +1,11 @@
-import { router } from 'expo-router';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { router } from "expo-router";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function Home() {
   return (
     <View style={styles.container}>
-
       <Image
-        source={require('../../../assets/_nwssu.jpeg')}
+        source={require("../../../assets/_nwssu.jpeg")}
         style={styles.Logoimage}
         resizeMode="cover"
       />
@@ -18,13 +17,11 @@ export default function Home() {
       </Text>
 
       <Text style={styles.subtitle}>
-        Browse university shirts, lanyards, and books with a saved wish list feature!
+        Browse university shirts, lanyards, books and other essential - all in
+        one place!
       </Text>
 
-      <Pressable
-        style={styles.shopButton}
-        onPress={() => router.push('/shop')}
-      >
+      <Pressable style={styles.shopButton} onPress={() => router.push("/shop")}>
         <Text style={styles.shopButtonText}>Browse Shop</Text>
       </Pressable>
     </View>
@@ -34,9 +31,9 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#ffffff",
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   Logoimage: {
@@ -48,21 +45,21 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 35,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 8,
     transform: [{ translateY: -70 }],
   },
 
   subtitle: {
-    fontSize: 18,
-    color: '#555555',
-    textAlign: 'center',
+    fontSize: 17,
+    color: "#555555",
+    textAlign: "center",
     marginBottom: 8,
     transform: [{ translateY: -70 }],
   },
 
   shopButton: {
-    backgroundColor: '#000000',
+    backgroundColor: "#436443",
     paddingVertical: 12,
     paddingHorizontal: 25,
     borderRadius: 8,
@@ -71,8 +68,8 @@ const styles = StyleSheet.create({
   },
 
   shopButtonText: {
-    color: '#ffffff',
+    color: "#ffffff",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });

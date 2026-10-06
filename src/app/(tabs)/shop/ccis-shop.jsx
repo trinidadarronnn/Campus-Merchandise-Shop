@@ -1,38 +1,55 @@
-import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native'
-import { useBasket } from '../../../context/BasketContext'
+import {
+  FlatList,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+
+import { useBasket } from "../../../context/BasketContext";
 
 export const products = [
   {
-    id: 'ccis-1',
-    name: 'Lexier 1:24 Scale Figurine',
-    price: '₱25,000.09',
-    image: require('../../../../assets/ShopProducts/_ccis/lexier.jpg'),
+    id: "ccis-1",
+    name: "Lexier 1:24 Scale Figurine",
+    price: "₱25,000.09",
+    image: require("../../../../assets/ShopProducts/_ccis/lexier.jpg"),
   },
+
   {
-    id: 'ccis-2',
-    name: 'CCIS Computer Lab Chair',
-    price: '₱500.46',
-    image: require('../../../../assets/ShopProducts/_ccis/LabChair.webp'),
+    id: "ccis-2",
+    name: "CCIS Computer Lab Chair",
+    price: "₱500.46",
+    image: require("../../../../assets/ShopProducts/_ccis/LabChair.webp"),
   },
+
   {
-    id: 'ccis-3',
-    name: 'CCIS Department T-Shirt',
-    price: '₱350.00',
-    image: require('../../../../assets/ShopProducts/_ccis/ccis-shirt.jpg'),
+    id: "ccis-3",
+    name: "CCIS Department T-Shirt",
+    price: "₱350.00",
+    image: require("../../../../assets/ShopProducts/_ccis/ccis-shirt.jpg"),
   },
+
   {
-    id: 'ccis-4',
-    name: 'CCIS Department ID Lace/Lanyard',
-    price: '₱75.00',
-    image: require('../../../../assets/ShopProducts/_ccis/ccis-lace.jpg'),
+    id: "ccis-4",
+    name: "CCIS Department ID Lace/Lanyard",
+    price: "₱75.00",
+    image: require("../../../../assets/ShopProducts/_ccis/ccis-lace.jpg"),
   },
-]
+];
 
 const CcisShop = () => {
-  const { addToBasket } = useBasket()
+  const { addToBasket, notification } = useBasket();
 
   return (
     <View style={styles.container}>
+      {notification !== "" && (
+        <View style={styles.notification}>
+          <Text style={styles.notificationText}>{notification}</Text>
+        </View>
+      )}
+
       <FlatList
         data={products}
         numColumns={2}
@@ -46,25 +63,36 @@ const CcisShop = () => {
 
             <Text style={styles.price}>{item.price}</Text>
 
-            <Pressable
-              style={styles.button}
-              onPress={() => addToBasket(item)}
-            >
+            <Pressable style={styles.button} onPress={() => addToBasket(item)}>
               <Text style={styles.buttonText}>Add to Basket</Text>
             </Pressable>
           </View>
         )}
       />
     </View>
-  )
-}
+  );
+};
 
-export default CcisShop
+export default CcisShop;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
+  },
+
+  notification: {
+    backgroundColor: "#436443",
+    padding: 12,
+    marginHorizontal: 12,
+    marginTop: 10,
+    borderRadius: 8,
+  },
+
+  notificationText: {
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "bold",
   },
 
   list: {
@@ -74,39 +102,39 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     margin: 8,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: "#f5f5f5",
     borderRadius: 8,
-    overflow: 'hidden',
+    overflow: "hidden",
     padding: 8,
   },
 
   productImage: {
-    width: '100%',
+    width: "100%",
     height: 180,
     borderRadius: 6,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
 
   name: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 6,
   },
 
   price: {
-    color: '#555',
+    color: "#555",
     marginTop: 4,
   },
 
   button: {
-    backgroundColor: '#000',
+    backgroundColor: "#436443",
     paddingVertical: 10,
     borderRadius: 6,
     marginTop: 10,
-    alignItems: 'center',
+    alignItems: "center",
   },
 
   buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
   },
-})
+});
