@@ -1,7 +1,7 @@
 import {
-  FlatList,
   Image,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -35,25 +35,26 @@ const ComShop = () => {
         </View>
       )}
 
-      <FlatList
-        data={products}
-        numColumns={2}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.list}
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Image source={item.image} style={styles.productImage} />
+      <ScrollView contentContainerStyle={styles.list}>
+        <View style={styles.productGrid}>
+          {products.map((item) => (
+            <View key={item.id} style={styles.card}>
+              <Image source={item.image} style={styles.productImage} />
 
-            <Text style={styles.name}>{item.name}</Text>
+              <Text style={styles.name}>{item.name}</Text>
 
-            <Text style={styles.price}>{item.price}</Text>
+              <Text style={styles.price}>{item.price}</Text>
 
-            <Pressable style={styles.button} onPress={() => addToBasket(item)}>
-              <Text style={styles.buttonText}>Add to Basket</Text>
-            </Pressable>
-          </View>
-        )}
-      />
+              <Pressable
+                style={styles.button}
+                onPress={() => addToBasket(item)}
+              >
+                <Text style={styles.buttonText}>Add to Basket</Text>
+              </Pressable>
+            </View>
+          ))}
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -84,9 +85,14 @@ const styles = StyleSheet.create({
     padding: 8,
   },
 
+  productGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+
   card: {
-    flex: 1,
-    margin: 8,
+    width: "46%",
+    margin: "2%",
     backgroundColor: "#f5f5f5",
     borderRadius: 8,
     overflow: "hidden",
