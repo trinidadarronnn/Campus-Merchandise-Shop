@@ -11,7 +11,7 @@ export default function Order() {
       <Text style={styles.title}>Your Orders</Text>
 
       <Text style={styles.sectionTitle}>Past Orders</Text>
-
+      // Display orders or a message if there are none
       {orders.length === 0 ? (
         <Text style={styles.emptyText}>
           No orders yet. Check out items from your basket and they will show up
